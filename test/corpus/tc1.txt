@@ -38,7 +38,7 @@ TC1(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (assignment_statement
@@ -47,7 +47,7 @@ TC1(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier)
               (identifier))))

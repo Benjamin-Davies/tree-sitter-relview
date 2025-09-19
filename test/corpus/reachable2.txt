@@ -30,7 +30,7 @@ Reachable2(R,S)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (binary_expression
                 (transpose

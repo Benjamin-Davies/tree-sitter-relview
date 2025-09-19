@@ -31,7 +31,7 @@ RTC2(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
@@ -39,7 +39,7 @@ RTC2(R)
         (identifier)
         (binary_expression
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier)))
           (identifier)))
@@ -47,7 +47,7 @@ RTC2(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier)
               (identifier))))

@@ -12,7 +12,10 @@ module.exports = grammar({
 
   extras: ($) => [$._whitespace, $.comment],
 
-  precedences: ($) => [[$.transpose, $.complement]],
+  precedences: ($) => [
+    [$.transpose, $.complement],
+    [$.base_function, $.identifier],
+  ],
 
   rules: {
     source_file: ($) => repeat($.definition),
@@ -72,7 +75,7 @@ module.exports = grammar({
       ),
     parenthesized_expression: ($) => seq('(', $._expression, ')'),
 
-    call: ($) => seq($.identifier, $.argument_list),
+    call: ($) => seq(choice($.base_function, $.identifier), $.argument_list),
     argument_list: ($) =>
       seq(
         '(',
@@ -86,5 +89,82 @@ module.exports = grammar({
     binary_expression: ($) =>
       prec.left(seq($._term, $._binary_operator, $._expression)),
     _binary_operator: ($) => choice('|', '&', '+', '*', '/', '\\'),
+
+    base_function: ($) =>
+      choice(
+        // Base functions for calculating constant relations and domains:
+        'TRUE',
+        'true',
+        'FALSE',
+        'false',
+        'L',
+        'O',
+        'I',
+        'Ln1',
+        'On1',
+        'L1n',
+        'O1n',
+        'dom',
+
+        // Base functions for calculating residuals and symmetric quotients:
+        'syq',
+
+        // Base functions for calculating closures:
+        'trans',
+        'refl',
+        'symm',
+
+        // Various base functions concerning vectors and points without choice operations:
+        'inj',
+        'init',
+        'next',
+        'succ',
+
+        // Base operations for choices:
+        'point',
+        'atom',
+
+        // Base operations which generate random relations:
+        'randomXY',
+        'randomcfXY',
+        'random',
+        'randomperm',
+
+        // Base functions for certain tests on relations
+        'empty',
+        'unival',
+        'eq',
+        'incl',
+        'cardeq',
+        'cardlt',
+        'cardleq',
+        'cardgt',
+        'cardgeq',
+
+        // Base functions concerning operations on powersets:
+        'epsi',
+        'cardrel',
+        'cardfilter',
+
+        // Base functions concerning relational product and sum domains:
+        '1-st',
+        '2-nd',
+        'p-1',
+        'p-2',
+        'p-ord',
+        'i-1',
+        'i-2',
+        's-ord',
+
+        // Base functions concerning function domains:
+        'part-f',
+        'tot-f',
+
+        // Base functions for minimal and maximal sets:
+        'minsets',
+        'minsets_upset',
+        'maxsets',
+        'maxsets_downset'
+      ),
   },
 });

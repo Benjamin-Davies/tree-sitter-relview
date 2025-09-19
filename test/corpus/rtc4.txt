@@ -36,20 +36,20 @@ RTC4(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))
         (while_body
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier))))
           (assignment_statement
@@ -71,6 +71,6 @@ RTC4(R)
         (binary_expression
           (identifier)
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))))))

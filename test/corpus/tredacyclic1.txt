@@ -22,6 +22,6 @@ TRedAcyclic1(R) = R & -(R * trans(R)).
             (binary_expression
               (identifier)
               (call
-                (identifier)
+                (base_function)
                 (argument_list
                   (identifier))))))))))

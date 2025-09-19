@@ -49,21 +49,21 @@ TopSort(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (complement
                 (identifier)))))
@@ -71,7 +71,7 @@ TopSort(R)
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (call
                   (identifier)

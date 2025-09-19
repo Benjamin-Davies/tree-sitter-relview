@@ -28,7 +28,7 @@ Acyclic2(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
@@ -41,7 +41,7 @@ Acyclic2(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier)
               (identifier))))
@@ -57,6 +57,6 @@ Acyclic2(R)
           (comment)))
       (return_statement
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier)))))))

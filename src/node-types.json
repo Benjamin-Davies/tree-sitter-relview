@@ -70,6 +70,11 @@
     }
   },
   {
+    "type": "base_function",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -114,6 +119,10 @@
       "types": [
         {
           "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "base_function",
           "named": true
         },
         {
@@ -582,6 +591,14 @@
     "named": false
   },
   {
+    "type": "1-st",
+    "named": false
+  },
+  {
+    "type": "2-nd",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
@@ -606,7 +623,15 @@
     "named": false
   },
   {
+    "type": "FALSE",
+    "named": false
+  },
+  {
     "type": "FI",
+    "named": false
+  },
+  {
+    "type": "I",
     "named": false
   },
   {
@@ -614,7 +639,31 @@
     "named": false
   },
   {
+    "type": "L",
+    "named": false
+  },
+  {
+    "type": "L1n",
+    "named": false
+  },
+  {
+    "type": "Ln1",
+    "named": false
+  },
+  {
+    "type": "O",
+    "named": false
+  },
+  {
+    "type": "O1n",
+    "named": false
+  },
+  {
     "type": "OD",
+    "named": false
+  },
+  {
+    "type": "On1",
     "named": false
   },
   {
@@ -623,6 +672,10 @@
   },
   {
     "type": "THEN",
+    "named": false
+  },
+  {
+    "type": "TRUE",
     "named": false
   },
   {
@@ -638,13 +691,177 @@
     "named": false
   },
   {
+    "type": "atom",
+    "named": false
+  },
+  {
+    "type": "cardeq",
+    "named": false
+  },
+  {
+    "type": "cardfilter",
+    "named": false
+  },
+  {
+    "type": "cardgeq",
+    "named": false
+  },
+  {
+    "type": "cardgt",
+    "named": false
+  },
+  {
+    "type": "cardleq",
+    "named": false
+  },
+  {
+    "type": "cardlt",
+    "named": false
+  },
+  {
+    "type": "cardrel",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
   },
   {
+    "type": "dom",
+    "named": false
+  },
+  {
+    "type": "empty",
+    "named": false
+  },
+  {
+    "type": "epsi",
+    "named": false
+  },
+  {
+    "type": "eq",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "i-1",
+    "named": false
+  },
+  {
+    "type": "i-2",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "incl",
+    "named": false
+  },
+  {
+    "type": "init",
+    "named": false
+  },
+  {
+    "type": "inj",
+    "named": false
+  },
+  {
+    "type": "maxsets",
+    "named": false
+  },
+  {
+    "type": "maxsets_downset",
+    "named": false
+  },
+  {
+    "type": "minsets",
+    "named": false
+  },
+  {
+    "type": "minsets_upset",
+    "named": false
+  },
+  {
+    "type": "next",
+    "named": false
+  },
+  {
+    "type": "p-1",
+    "named": false
+  },
+  {
+    "type": "p-2",
+    "named": false
+  },
+  {
+    "type": "p-ord",
+    "named": false
+  },
+  {
+    "type": "part-f",
+    "named": false
+  },
+  {
+    "type": "point",
+    "named": false
+  },
+  {
+    "type": "random",
+    "named": false
+  },
+  {
+    "type": "randomXY",
+    "named": false
+  },
+  {
+    "type": "randomcfXY",
+    "named": false
+  },
+  {
+    "type": "randomperm",
+    "named": false
+  },
+  {
+    "type": "refl",
+    "named": false
+  },
+  {
+    "type": "s-ord",
+    "named": false
+  },
+  {
+    "type": "succ",
+    "named": false
+  },
+  {
+    "type": "symm",
+    "named": false
+  },
+  {
+    "type": "syq",
+    "named": false
+  },
+  {
+    "type": "tot-f",
+    "named": false
+  },
+  {
+    "type": "trans",
+    "named": false
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "unival",
+    "named": false
   },
   {
     "type": "|",

@@ -43,36 +43,36 @@ TRed(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))
         (while_body
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier))))
           (comment)
           (if_statement
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (call
-                  (identifier)
+                  (base_function)
                   (argument_list
                     (call
-                      (identifier)
+                      (base_function)
                       (argument_list
                         (binary_expression
                           (identifier)
                           (complement
                             (identifier)))))))
                 (call
-                  (identifier)
+                  (base_function)
                   (argument_list
                     (call
-                      (identifier)
+                      (base_function)
                       (argument_list
                         (identifier)))))))
             (then_clause

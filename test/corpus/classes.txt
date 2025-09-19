@@ -34,10 +34,10 @@ Classes(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier))))))
       (comment)
@@ -58,14 +58,14 @@ Classes(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))
         (while_body
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier))))
           (assignment_statement

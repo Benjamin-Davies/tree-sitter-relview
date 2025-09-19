@@ -16,14 +16,14 @@ Acyclic1(R) = incl(trans(R),-I(R)).
       (identifier))
     (function_body
       (call
-        (identifier)
+        (base_function)
         (argument_list
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier)))
           (complement
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier)))))))))

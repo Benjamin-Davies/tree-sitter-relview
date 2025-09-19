@@ -36,21 +36,21 @@ RTC5(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))
         (while_body
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (identifier))))
           (comment)
@@ -79,6 +79,6 @@ RTC5(R)
         (binary_expression
           (identifier)
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (identifier))))))))

@@ -34,7 +34,7 @@ Szpilrajn(R)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (complement
                 (parenthesized_expression
@@ -47,7 +47,7 @@ Szpilrajn(R)
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (complement
                   (parenthesized_expression

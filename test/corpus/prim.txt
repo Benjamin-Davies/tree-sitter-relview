@@ -33,26 +33,26 @@ Prim(R)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (identifier))))
       (comment)
       (assignment_statement
         (identifier)
         (call
-          (identifier)
+          (base_function)
           (argument_list
             (binary_expression
               (identifier)
               (call
-                (identifier)
+                (base_function)
                 (argument_list
                   (identifier)))))))
       (comment)
       (while_loop
         (complement
           (call
-            (identifier)
+            (base_function)
             (argument_list
               (complement
                 (identifier)))))
@@ -60,7 +60,7 @@ Prim(R)
           (assignment_statement
             (identifier)
             (call
-              (identifier)
+              (base_function)
               (argument_list
                 (binary_expression
                   (identifier)
@@ -83,7 +83,7 @@ Prim(R)
                 (transpose
                   (identifier))
                 (call
-                  (identifier)
+                  (base_function)
                   (argument_list
                     (identifier))))))
           (comment)))
