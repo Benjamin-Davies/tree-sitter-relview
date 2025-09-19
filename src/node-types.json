@@ -204,7 +204,7 @@
       "required": true,
       "types": [
         {
-          "type": "definition",
+          "type": "function_decl",
           "named": true
         },
         {
@@ -290,6 +290,53 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "transpose",
+          "named": true
+        },
+        {
+          "type": "tupling",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_decl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "complement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         },
         {

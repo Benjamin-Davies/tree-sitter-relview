@@ -39,24 +39,23 @@ Base(R)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier))
-          (function_body
-            (call
-              (base_function)
-              (argument_list
+          (call
+            (base_function)
+            (argument_list
+              (identifier)
+              (binary_expression
                 (identifier)
-                (binary_expression
-                  (identifier)
-                  (call
-                    (base_function)
-                    (argument_list
-                      (binary_expression
-                        (transpose
-                          (identifier))
-                        (identifier)))))))))
+                (call
+                  (base_function)
+                  (argument_list
+                    (binary_expression
+                      (transpose
+                        (identifier))
+                      (identifier))))))))
         (identifier)
         (identifier)
         (identifier)

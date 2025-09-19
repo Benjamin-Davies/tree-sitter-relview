@@ -606,47 +606,45 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
+          (binary_expression
+            (identifier)
             (binary_expression
-              (identifier)
-              (binary_expression
-                (complement
-                  (parenthesized_expression
-                    (binary_expression
-                      (identifier)
-                      (call
-                        (base_function)
-                        (argument_list
-                          (identifier))))))
-                (complement
-                  (parenthesized_expression
-                    (binary_expression
-                      (call
-                        (base_function)
-                        (argument_list
-                          (identifier)))
-                      (transpose
-                        (identifier)))))))))
-        (definition
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (call
+                      (base_function)
+                      (argument_list
+                        (identifier))))))
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (call
+                      (base_function)
+                      (argument_list
+                        (identifier)))
+                    (transpose
+                      (identifier))))))))
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (transpose
-              (parenthesized_expression
-                (binary_expression
-                  (transpose
-                    (identifier))
-                  (call
-                    (identifier)
-                    (argument_list
-                      (identifier))))))))
+          (transpose
+            (parenthesized_expression
+              (binary_expression
+                (transpose
+                  (identifier))
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier)))))))
         (identifier)
         (identifier)
         (identifier)
@@ -767,39 +765,37 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier))
-          (function_body
-            (binary_expression
+          (binary_expression
+            (call
+              (base_function)
+              (argument_list
+                (identifier)))
+            (transpose
               (call
                 (base_function)
                 (argument_list
-                  (identifier)))
-              (transpose
-                (call
-                  (base_function)
-                  (argument_list
-                    (identifier)))))))
-        (definition
+                  (identifier))))))
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (complement
-              (call
-                (base_function)
-                (argument_list
-                  (identifier)
-                  (call
-                    (base_function)
-                    (argument_list
-                      (binary_expression
-                        (identifier)
-                        (complement
-                          (identifier))))))))))
+          (complement
+            (call
+              (base_function)
+              (argument_list
+                (identifier)
+                (call
+                  (base_function)
+                  (argument_list
+                    (binary_expression
+                      (identifier)
+                      (complement
+                        (identifier)))))))))
         (identifier)
         (identifier)
         (identifier)
@@ -978,47 +974,44 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier))
-          (function_body
-            (call
-              (base_function)
-              (argument_list
-                (identifier)))))
-        (definition
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (binary_expression
-              (transpose
-                (call
-                  (identifier)
-                  (argument_list
-                    (identifier))))
-              (binary_expression
+          (binary_expression
+            (transpose
+              (call
                 (identifier)
-                (complement
-                  (call
-                    (base_function)
-                    (argument_list
-                      (identifier))))))))
-        (definition
-          (identifier)
-          (parameter_list
-            (identifier)
-            (identifier)
-            (identifier))
-          (function_body
+                (argument_list
+                  (identifier))))
             (binary_expression
               (identifier)
-              (binary_expression
-                (identifier)
-                (transpose
-                  (identifier))))))
+              (complement
+                (call
+                  (base_function)
+                  (argument_list
+                    (identifier)))))))
+        (function_decl
+          (identifier)
+          (parameter_list
+            (identifier)
+            (identifier)
+            (identifier))
+          (binary_expression
+            (identifier)
+            (binary_expression
+              (identifier)
+              (transpose
+                (identifier)))))
         (identifier)
         (identifier)
         (identifier)
@@ -1414,37 +1407,35 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier)
             (identifier))
-          (function_body
-            (binary_expression
-              (complement
-                (parenthesized_expression
-                  (binary_expression
-                    (identifier)
-                    (binary_expression
-                      (identifier)
-                      (identifier)))))
-              (base_function))))
-        (definition
-          (identifier)
-          (parameter_list
-            (identifier)
-            (identifier)
-            (identifier))
-          (function_body
-            (binary_expression
+          (binary_expression
+            (complement
               (parenthesized_expression
                 (binary_expression
                   (identifier)
                   (binary_expression
                     (identifier)
-                    (identifier))))
-              (base_function))))
+                    (identifier)))))
+            (base_function)))
+        (function_decl
+          (identifier)
+          (parameter_list
+            (identifier)
+            (identifier)
+            (identifier))
+          (binary_expression
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier))))
+            (base_function)))
         (identifier))
       (assignment_statement
         (identifier)
@@ -1712,21 +1703,20 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (complement
-              (parenthesized_expression
-                (binary_expression
-                  (identifier)
-                  (complement
-                    (parenthesized_expression
-                      (binary_expression
-                        (identifier)
-                        (identifier)))))))))
+          (complement
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (complement
+                  (parenthesized_expression
+                    (binary_expression
+                      (identifier)
+                      (identifier))))))))
         (identifier)
         (identifier)
         (identifier)
@@ -1818,28 +1808,26 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (complement
-              (parenthesized_expression
-                (binary_expression
-                  (identifier)
-                  (identifier))))))
-        (definition
+          (complement
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (identifier)))))
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (complement
-              (parenthesized_expression
-                (binary_expression
-                  (identifier)
-                  (identifier))))))
+          (complement
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (identifier)))))
         (identifier)
         (identifier)
         (identifier))
@@ -2358,23 +2346,22 @@ Dfs(R,W)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
-            (binary_expression
-              (parenthesized_expression
-                (binary_expression
-                  (identifier)
-                  (complement
-                    (identifier))))
-              (parenthesized_expression
-                (binary_expression
-                  (identifier)
-                  (complement
-                    (identifier)))))))
+          (binary_expression
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (complement
+                  (identifier))))
+            (parenthesized_expression
+              (binary_expression
+                (identifier)
+                (complement
+                  (identifier))))))
         (identifier)
         (identifier)
         (identifier)

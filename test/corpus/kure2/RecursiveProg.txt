@@ -453,26 +453,25 @@ ChromNumbC(E)
       (identifier))
     (program_body
       (decl_list
-        (definition
+        (function_decl
           (identifier)
           (parameter_list
             (identifier)
             (identifier))
-          (function_body
+          (binary_expression
+            (call
+              (base_function)
+              (argument_list
+                (complement
+                  (identifier))))
             (binary_expression
-              (call
-                (base_function)
-                (argument_list
-                  (complement
-                    (identifier))))
-              (binary_expression
-                (identifier)
-                (transpose
-                  (call
-                    (base_function)
-                    (argument_list
-                      (complement
-                        (identifier)))))))))
+              (identifier)
+              (transpose
+                (call
+                  (base_function)
+                  (argument_list
+                    (complement
+                      (identifier))))))))
         (identifier)
         (identifier)
         (identifier)

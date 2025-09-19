@@ -115,7 +115,7 @@ module.exports = grammar({
   word: ($) => $.identifier,
 
   rules: {
-    source_file: ($) => repeat(seq($.definition, '.')),
+    source_file: ($) => repeat($.definition),
 
     _whitespace: ($) => /\s+/,
     comment: ($) => /\{[^\}]*\}/,
@@ -125,7 +125,8 @@ module.exports = grammar({
       seq(
         $.identifier,
         $.parameter_list,
-        choice($.program_body, $.function_body)
+        choice($.program_body, $.function_body),
+        '.'
       ),
     program_body: ($) =>
       seq(
@@ -146,10 +147,12 @@ module.exports = grammar({
     decl_list: ($) =>
       seq(
         'DECL',
-        repeat(seq($.definition, ';')),
+        repeat($.function_decl),
         $.identifier,
         repeat(seq(',', $.identifier))
       ),
+    function_decl: ($) =>
+      seq($.identifier, $.parameter_list, '=', $._expression, ';'),
 
     _statement: ($) =>
       seq(

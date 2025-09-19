@@ -6,17 +6,8 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "definition"
-          },
-          {
-            "type": "STRING",
-            "value": "."
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "definition"
       }
     },
     "_whitespace": {
@@ -54,6 +45,10 @@
               "name": "function_body"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": "."
         }
       ]
     },
@@ -162,17 +157,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "definition"
-              },
-              {
-                "type": "STRING",
-                "value": ";"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "function_decl"
           }
         },
         {
@@ -194,6 +180,31 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "function_decl": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter_list"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
