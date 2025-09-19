@@ -1,28 +1,25 @@
 ==================
-RTC1
+RTC4
 ==================
 
-{ Reflexive-Transitive Closure }
-{ simple iteration computing the powers R^0, R^1, R^2, R^3, ... }
+{ Warshall's algorithm with partial identities }
 
-RTC1(R)
+RTC4(R)
   DECL P,Q,S
   BEG
-    P = I(R)            { P = current power of R }
-    Q = O(R)            { Q = previous value of S }
-    S = P               { S = sum of powers of R up to P }
-    WHILE -eq(Q,S) DO
-      P = P * R
-      Q = S
-      S = S | P
+    S = R
+    Q = I(R)
+    WHILE -empty(Q) DO
+      P = atom(Q)
+      S = S | S * P * S
+      Q = Q & -P
     OD
-    RETURN S
+    RETURN S | I(R)
   END.
 
 ---
 
 (source_file
-  (comment)
   (comment)
   (definition
     (identifier)
@@ -35,42 +32,45 @@ RTC1(R)
         (identifier))
       (assignment_statement
         (identifier)
-        (call
-          (identifier)
-          (argument_list
-            (identifier))))
-      (comment)
-      (assignment_statement
-        (identifier)
-        (call
-          (identifier)
-          (argument_list
-            (identifier))))
-      (comment)
-      (assignment_statement
-        (identifier)
         (identifier))
-      (comment)
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))
       (while_loop
         (complement
           (call
             (identifier)
             (argument_list
-              (identifier)
               (identifier))))
         (while_body
           (assignment_statement
             (identifier)
-            (binary_expression
+            (call
               (identifier)
-              (identifier)))
+              (argument_list
+                (identifier))))
           (assignment_statement
             (identifier)
-            (identifier))
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier)))))
           (assignment_statement
             (identifier)
             (binary_expression
               (identifier)
-              (identifier)))))
+              (complement
+                (identifier))))))
       (return_statement
-        (identifier)))))
+        (binary_expression
+          (identifier)
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))))))

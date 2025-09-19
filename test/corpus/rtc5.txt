@@ -1,0 +1,84 @@
+==================
+RTC5
+==================
+
+{ Warshall's algorithm with heterogeneous vector }
+
+RTC5(R)
+  DECL P,Q,S
+  BEG
+    S = R
+    Q = Ln1(R)                     { Q = nodes not yet considered }
+    WHILE -empty(Q) DO
+      P = point(Q)                 { select a node P }
+      S = S | (S * P) * (P^ * S)   { use P as intermediate node }
+      Q = Q & -P
+    OD
+    RETURN S | I(R)
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (identifier)))
+                (parenthesized_expression
+                  (binary_expression
+                    (transpose
+                      (identifier))
+                    (identifier))))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (identifier))))))
+      (return_statement
+        (binary_expression
+          (identifier)
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))))))

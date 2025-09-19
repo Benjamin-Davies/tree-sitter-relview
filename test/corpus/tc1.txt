@@ -1,16 +1,15 @@
 ==================
-RTC1
+TC1
 ==================
 
-{ Reflexive-Transitive Closure }
-{ simple iteration computing the powers R^0, R^1, R^2, R^3, ... }
+{ transitive closure: powers R^1, R^2, R^3, R^4, ... }
 
-RTC1(R)
+TC1(R)
   DECL P,Q,S
   BEG
-    P = I(R)            { P = current power of R }
-    Q = O(R)            { Q = previous value of S }
-    S = P               { S = sum of powers of R up to P }
+    P = R               { see RTC1; start with R instead of I }
+    Q = O(R)
+    S = P
     WHILE -eq(Q,S) DO
       P = P * R
       Q = S
@@ -23,7 +22,6 @@ RTC1(R)
 
 (source_file
   (comment)
-  (comment)
   (definition
     (identifier)
     (parameter_list
@@ -35,10 +33,7 @@ RTC1(R)
         (identifier))
       (assignment_statement
         (identifier)
-        (call
-          (identifier)
-          (argument_list
-            (identifier))))
+        (identifier))
       (comment)
       (assignment_statement
         (identifier)
@@ -46,11 +41,9 @@ RTC1(R)
           (identifier)
           (argument_list
             (identifier))))
-      (comment)
       (assignment_statement
         (identifier)
         (identifier))
-      (comment)
       (while_loop
         (complement
           (call

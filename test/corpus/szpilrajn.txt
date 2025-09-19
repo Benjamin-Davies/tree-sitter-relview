@@ -1,0 +1,70 @@
+==================
+Szpilrajn
+==================
+
+{ Linear Extension }
+
+Szpilrajn(R)
+  DECL Q,S
+  BEG
+    S = R                        { S = linear extension of R }
+    WHILE -empty(-(S | S^)) DO   { is S not connex? }
+      Q = atom(-(S | S^))        { select incomparable pair }
+      S = S | S * Q * S          { add pair and transitive edges }
+    OD
+    RETURN S
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (transpose
+                      (identifier))))))))
+        (while_body
+          (comment)
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (complement
+                  (parenthesized_expression
+                    (binary_expression
+                      (identifier)
+                      (transpose
+                        (identifier))))))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier)))))
+          (comment)))
+      (return_statement
+        (identifier)))))

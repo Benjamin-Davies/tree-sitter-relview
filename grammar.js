@@ -12,7 +12,7 @@ module.exports = grammar({
 
   extras: ($) => [$._whitespace, $.comment],
 
-  precedences: ($) => [[$.transpose, $.complement, $.binary_expression]],
+  precedences: ($) => [[$.transpose, $.complement]],
 
   rules: {
     source_file: ($) => repeat($.definition),
@@ -46,23 +46,29 @@ module.exports = grammar({
       ),
     decl_list: ($) => seq('DECL', $.identifier, repeat(seq(',', $.identifier))),
 
-    _statement: ($) => choice($.assignment_statement, $.while_loop),
+    _statement: ($) =>
+      choice($.assignment_statement, $.if_statement, $.while_loop),
 
     assignment_statement: ($) => seq($.identifier, '=', $._expression),
 
-    while_loop: ($) =>
-      seq('WHILE', $._expression, 'DO', repeat1($._statement), 'OD'),
+    if_statement: ($) =>
+      seq('IF', $._expression, $.then_clause, optional($.else_clause), 'FI'),
+    then_clause: ($) => seq('THEN', repeat1($._statement)),
+    else_clause: ($) => seq('ELSE', repeat1($._statement)),
+
+    while_loop: ($) => seq('WHILE', $._expression, $.while_body),
+    while_body: ($) => seq('DO', repeat1($._statement), 'OD'),
 
     return_statement: ($) => seq('RETURN', $._expression),
 
-    _expression: ($) =>
+    _expression: ($) => choice($._term, $.binary_expression),
+    _term: ($) =>
       choice(
-        $.parenthesized_expression,
         $.identifier,
-        $.call,
         $.transpose,
         $.complement,
-        $.binary_expression
+        $.call,
+        $.parenthesized_expression
       ),
     parenthesized_expression: ($) => seq('(', $._expression, ')'),
 
@@ -74,11 +80,11 @@ module.exports = grammar({
         ')'
       ),
 
-    complement: ($) => seq('-', $._expression),
-    transpose: ($) => seq($._expression, '^'),
+    complement: ($) => seq('-', $._term),
+    transpose: ($) => seq($._term, '^'),
 
     binary_expression: ($) =>
-      prec.left(seq($._expression, $._binary_operator, $._expression)),
-    _binary_operator: ($) => choice('|', '&', '*', '/', '\\'),
+      prec.left(seq($._term, $._binary_operator, $._expression)),
+    _binary_operator: ($) => choice('|', '&', '+', '*', '/', '\\'),
   },
 });

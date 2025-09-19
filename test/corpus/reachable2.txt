@@ -1,0 +1,52 @@
+==================
+Reachable2
+==================
+
+Reachable2(R,S)
+  DECL Q
+  BEG
+    Q = S                      { Q = nodes reached so far }
+    WHILE -incl(R^ * Q,Q) DO   { any new nodes in next step? }
+      Q = Q | R^ * Q           { add nodes reached in next step }
+    OD
+    RETURN Q
+  END.
+
+---
+
+(source_file
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier)
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (binary_expression
+                (transpose
+                  (identifier))
+                (identifier))
+              (identifier))))
+        (while_body
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (transpose
+                  (identifier))
+                (identifier))))
+          (comment)))
+      (return_statement
+        (identifier)))))

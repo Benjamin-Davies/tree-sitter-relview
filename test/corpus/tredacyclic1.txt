@@ -1,0 +1,27 @@
+==================
+TRedAcyclic1
+==================
+
+{ Transitive reduction }
+
+TRedAcyclic1(R) = R & -(R * trans(R)).
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (binary_expression
+        (identifier)
+        (complement
+          (parenthesized_expression
+            (binary_expression
+              (identifier)
+              (call
+                (identifier)
+                (argument_list
+                  (identifier))))))))))

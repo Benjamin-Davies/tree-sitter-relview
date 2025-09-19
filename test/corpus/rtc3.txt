@@ -1,0 +1,18 @@
+==================
+RTC3
+==================
+
+{ Warshall's algorithm }
+
+RTC3(R)
+  DECL P,Q,S
+  BEG
+    S = R
+    Q = L(R)                       { Q = nodes not yet considered }
+    WHILE -empty(Q) DO
+      P = point(Q)                 { select a node P }
+      S = S | (S * P) * (P^ * S)   { use P as intermediate node }
+      Q = Q & -P
+    OD
+    RETURN S | I(R)
+  END.

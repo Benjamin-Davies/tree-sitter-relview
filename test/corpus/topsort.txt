@@ -1,0 +1,98 @@
+==================
+TopSort
+==================
+
+{ Topological sort }
+
+Min(R,S) = S & -(R^ * S).
+
+TopSort(R)
+  DECL P,Q,S
+  BEG
+    S = I(R)                 { S = linear order }
+    Q = O(R)                 { Q = nodes already considered }
+    WHILE -empty(-Q) DO
+      P = point(Min(R,-Q))   { P = R-minimal source in complement of Q }
+      S = S | Q * P^         { add edges from all nodes in Q to P }
+      Q = Q | P
+    OD
+    RETURN S
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier)
+      (identifier))
+    (function_body
+      (binary_expression
+        (identifier)
+        (complement
+          (parenthesized_expression
+            (binary_expression
+              (transpose
+                (identifier))
+              (identifier)))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))
+      (comment)
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (complement
+                (identifier)))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier)
+                    (complement
+                      (identifier)))))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (identifier)
+                (transpose
+                  (identifier)))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (identifier)))))
+      (return_statement
+        (identifier)))))

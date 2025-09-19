@@ -1,0 +1,93 @@
+==================
+TRed
+==================
+
+{ Greedy algorithm for general graphs }
+
+TRed(R)
+  DECL P,Q,S
+  BEG
+    Q = R                                   { Q = elements left to try }
+    S = R                                   { S = transitive reduction }
+    WHILE -empty(Q) DO
+      P = atom(Q)                           { select an element P }
+      IF eq(refl(trans(S & -P)),refl(trans(R))) THEN
+        S = S & -P                          { remove P, if possible }
+      FI
+      Q = Q & -P
+    OD
+    RETURN S
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (comment)
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))
+          (comment)
+          (if_statement
+            (call
+              (identifier)
+              (argument_list
+                (call
+                  (identifier)
+                  (argument_list
+                    (call
+                      (identifier)
+                      (argument_list
+                        (binary_expression
+                          (identifier)
+                          (complement
+                            (identifier)))))))
+                (call
+                  (identifier)
+                  (argument_list
+                    (call
+                      (identifier)
+                      (argument_list
+                        (identifier)))))))
+            (then_clause
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (complement
+                    (identifier)))))
+            (comment))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (identifier))))))
+      (return_statement
+        (identifier)))))

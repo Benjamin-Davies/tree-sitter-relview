@@ -1,29 +1,22 @@
 ==================
-RTC1
+Acyclic2
 ==================
 
-{ Reflexive-Transitive Closure }
-{ simple iteration computing the powers R^0, R^1, R^2, R^3, ... }
-
-RTC1(R)
-  DECL P,Q,S
+Acyclic2(R)
+  DECL Q,S
   BEG
-    P = I(R)            { P = current power of R }
-    Q = O(R)            { Q = previous value of S }
-    S = P               { S = sum of powers of R up to P }
+    Q = L(R)            { Q = previous value of S }
+    S = R * Q           { S = nodes with paths of length 1 }
     WHILE -eq(Q,S) DO
-      P = P * R
       Q = S
-      S = S | P
+      S = R * S         { increase length of paths by 1 }
     OD
-    RETURN S
+    RETURN empty(S)
   END.
 
 ---
 
 (source_file
-  (comment)
-  (comment)
   (definition
     (identifier)
     (parameter_list
@@ -31,7 +24,6 @@ RTC1(R)
     (program_body
       (decl_list
         (identifier)
-        (identifier)
         (identifier))
       (assignment_statement
         (identifier)
@@ -42,14 +34,9 @@ RTC1(R)
       (comment)
       (assignment_statement
         (identifier)
-        (call
+        (binary_expression
           (identifier)
-          (argument_list
-            (identifier))))
-      (comment)
-      (assignment_statement
-        (identifier)
-        (identifier))
+          (identifier)))
       (comment)
       (while_loop
         (complement
@@ -61,16 +48,15 @@ RTC1(R)
         (while_body
           (assignment_statement
             (identifier)
-            (binary_expression
-              (identifier)
-              (identifier)))
-          (assignment_statement
-            (identifier)
             (identifier))
           (assignment_statement
             (identifier)
             (binary_expression
               (identifier)
-              (identifier)))))
+              (identifier)))
+          (comment)))
       (return_statement
-        (identifier)))))
+        (call
+          (identifier)
+          (argument_list
+            (identifier)))))))

@@ -1,0 +1,29 @@
+==================
+Acyclic1
+==================
+
+{ Test for absence of cycles }
+
+Acyclic1(R) = incl(trans(R),-I(R)).
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (call
+        (identifier)
+        (argument_list
+          (call
+            (identifier)
+            (argument_list
+              (identifier)))
+          (complement
+            (call
+              (identifier)
+              (argument_list
+                (identifier)))))))))

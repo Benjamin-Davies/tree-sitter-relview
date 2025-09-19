@@ -1,0 +1,94 @@
+==================
+Classes
+==================
+
+{ Equivalence classes }
+
+Classes(R)
+  DECL P,Q,S
+  BEG
+    P = point(Ln1(R))        { P = element not yet considered }
+    S = R * P                { S = column with class of P }
+    Q = -(R * P)             { Q = elements not yet considered }
+    WHILE -empty(Q) DO
+      P = point(Q)
+      S = (S^ + (R * P)^)^   { add column with class of P }
+      Q = Q & -(R * P)
+    OD
+    RETURN S
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))))
+      (comment)
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (identifier)))
+      (comment)
+      (assignment_statement
+        (identifier)
+        (complement
+          (parenthesized_expression
+            (binary_expression
+              (identifier)
+              (identifier)))))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (transpose
+              (parenthesized_expression
+                (binary_expression
+                  (transpose
+                    (identifier))
+                  (transpose
+                    (parenthesized_expression
+                      (binary_expression
+                        (identifier)
+                        (identifier))))))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (identifier))))))))
+      (return_statement
+        (identifier)))))

@@ -1,0 +1,91 @@
+==================
+Prim
+==================
+
+{ Spanning tree: Prim's algorithm }
+
+Prim(R)
+  DECL P,Q,S
+  BEG
+    S = O(R)                  { S = spanning tree }
+    Q = point(R * Ln1(R))     { Q = nodes already considered }
+    WHILE -empty(-Q) DO
+      P = atom(Q * -Q^ & R)   { P = some edge from Q to its complement }
+      S = S | P
+      Q = Q | P^ * Ln1(R)     { add target of edge P to Q }
+    OD
+    RETURN S
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))
+      (comment)
+      (assignment_statement
+        (identifier)
+        (call
+          (identifier)
+          (argument_list
+            (binary_expression
+              (identifier)
+              (call
+                (identifier)
+                (argument_list
+                  (identifier)))))))
+      (comment)
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (complement
+                (identifier)))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (binary_expression
+                  (identifier)
+                  (binary_expression
+                    (complement
+                      (transpose
+                        (identifier)))
+                    (identifier))))))
+          (comment)
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (identifier)))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (transpose
+                  (identifier))
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier))))))
+          (comment)))
+      (return_statement
+        (identifier)))))

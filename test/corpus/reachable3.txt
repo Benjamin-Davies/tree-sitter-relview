@@ -1,0 +1,17 @@
+==================
+Reachable3
+==================
+
+Reachable3(R,S)
+  DECL P,Q
+  BEG
+    Q = S                { Q = nodes reached so far }
+    P = -S & R^ * S      { P = new nodes in next step }
+    WHILE -empty(P) DO   { any new nodes? }
+      Q = Q | P          { add new nodes }
+      P = -Q & R^ * P    { new nodes reached in next step }
+    OD
+    RETURN Q
+  END.
+
+  ---

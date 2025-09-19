@@ -1,20 +1,17 @@
 ==================
-RTC1
+RTC2
 ==================
 
-{ Reflexive-Transitive Closure }
-{ simple iteration computing the powers R^0, R^1, R^2, R^3, ... }
+{ repeated squaring }
 
-RTC1(R)
-  DECL P,Q,S
+RTC2(R)
+  DECL Q,S
   BEG
-    P = I(R)            { P = current power of R }
     Q = O(R)            { Q = previous value of S }
-    S = P               { S = sum of powers of R up to P }
+    S = I(R) | R        { S = sum of powers of R }
     WHILE -eq(Q,S) DO
-      P = P * R
       Q = S
-      S = S | P
+      S = S * S
     OD
     RETURN S
   END.
@@ -23,7 +20,6 @@ RTC1(R)
 
 (source_file
   (comment)
-  (comment)
   (definition
     (identifier)
     (parameter_list
@@ -31,7 +27,6 @@ RTC1(R)
     (program_body
       (decl_list
         (identifier)
-        (identifier)
         (identifier))
       (assignment_statement
         (identifier)
@@ -42,14 +37,12 @@ RTC1(R)
       (comment)
       (assignment_statement
         (identifier)
-        (call
-          (identifier)
-          (argument_list
-            (identifier))))
-      (comment)
-      (assignment_statement
-        (identifier)
-        (identifier))
+        (binary_expression
+          (call
+            (identifier)
+            (argument_list
+              (identifier)))
+          (identifier)))
       (comment)
       (while_loop
         (complement
@@ -59,11 +52,6 @@ RTC1(R)
               (identifier)
               (identifier))))
         (while_body
-          (assignment_statement
-            (identifier)
-            (binary_expression
-              (identifier)
-              (identifier)))
           (assignment_statement
             (identifier)
             (identifier))

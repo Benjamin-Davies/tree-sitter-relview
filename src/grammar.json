@@ -184,6 +184,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "if_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "while_loop"
         }
       ]
@@ -205,6 +209,71 @@
         }
       ]
     },
+    "if_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "IF"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "then_clause"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "else_clause"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "FI"
+        }
+      ]
+    },
+    "then_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "THEN"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        }
+      ]
+    },
+    "else_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ELSE"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        }
+      ]
+    },
     "while_loop": {
       "type": "SEQ",
       "members": [
@@ -216,6 +285,15 @@
           "type": "SYMBOL",
           "name": "_expression"
         },
+        {
+          "type": "SYMBOL",
+          "name": "while_body"
+        }
+      ]
+    },
+    "while_body": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "DO"
@@ -251,15 +329,20 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "parenthesized_expression"
+          "name": "_term"
         },
+        {
+          "type": "SYMBOL",
+          "name": "binary_expression"
+        }
+      ]
+    },
+    "_term": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SYMBOL",
           "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "call"
         },
         {
           "type": "SYMBOL",
@@ -271,7 +354,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "binary_expression"
+          "name": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_expression"
         }
       ]
     },
@@ -360,7 +447,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_expression"
+          "name": "_term"
         }
       ]
     },
@@ -369,7 +456,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_expression"
+          "name": "_term"
         },
         {
           "type": "STRING",
@@ -385,7 +472,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_expression"
+            "name": "_term"
           },
           {
             "type": "SYMBOL",
@@ -408,6 +495,10 @@
         {
           "type": "STRING",
           "value": "&"
+        },
+        {
+          "type": "STRING",
+          "value": "+"
         },
         {
           "type": "STRING",
@@ -444,10 +535,6 @@
       {
         "type": "SYMBOL",
         "name": "complement"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "binary_expression"
       }
     ]
   ],
