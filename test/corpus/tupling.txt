@@ -1,0 +1,41 @@
+==================
+Tupling
+==================
+
+Tupling(R, S)
+  DECL Q
+  BEG
+    Q = [R, S]
+    Q = [|R, S]
+    Q = [R, S|]
+    RETURN Q
+  END.
+
+---
+
+(source_file
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier)
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (tupling
+          (identifier)
+          (identifier)))
+      (assignment_statement
+        (identifier)
+        (tupling
+          (identifier)
+          (identifier)))
+      (assignment_statement
+        (identifier)
+        (tupling
+          (identifier)
+          (identifier)))
+      (return_statement
+        (identifier)))))

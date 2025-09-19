@@ -177,6 +177,7 @@ module.exports = grammar({
         $.transpose,
         $.complement,
         $.call,
+        $.tupling,
         $.parenthesized_expression
       ),
     parenthesized_expression: ($) => seq('(', $._expression, ')'),
@@ -195,6 +196,15 @@ module.exports = grammar({
     binary_expression: ($) =>
       prec.left(seq($._term, $._binary_operator, $._expression)),
     _binary_operator: ($) => choice('|', '&', '+', '*', '/', '\\'),
+
+    tupling: ($) =>
+      seq(
+        choice('[', '[|'),
+        $._expression,
+        ',',
+        $._expression,
+        choice(']', '|]')
+      ),
 
     base_function: ($) => choice(...base_functions),
   },
