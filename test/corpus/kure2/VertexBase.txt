@@ -1,0 +1,193 @@
+==================
+VertexBase
+==================
+
+{*********************************************************
+  Computation of a vertex base of a directed graph
+*********************************************************}
+
+Base(R)
+  DECL vector(X) = eq(X,X*L(X^*X));
+       B, C, S, T, b, p, x
+  BEG  B = rtc(R) & rtc(R)^;
+       S = B * point(Ln1(R));
+       x = -S;
+       WHILE -empty(x) DO
+         p = point(x);
+         S = conc(S, B * p);
+         x = x & -(B * p)
+         OD;
+       T = S^ * R * S;
+       T = T & -I(T);
+       C = S * inj(sources(T))^;
+       b = On1(R);
+       WHILE -vector(C) DO
+         b = b | point(first(C));
+         C = rest(C)
+         OD;
+       b = b | point(C)
+       RETURN b
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (definition
+          (identifier)
+          (parameter_list
+            (identifier))
+          (function_body
+            (call
+              (base_function)
+              (argument_list
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (call
+                    (base_function)
+                    (argument_list
+                      (binary_expression
+                        (transpose
+                          (identifier))
+                        (identifier)))))))))
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (call
+            (identifier)
+            (argument_list
+              (identifier)))
+          (transpose
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (call
+            (base_function)
+            (argument_list
+              (call
+                (base_function)
+                (argument_list
+                  (identifier)))))))
+      (assignment_statement
+        (identifier)
+        (complement
+          (identifier)))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier)))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (identifier))))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (transpose
+            (identifier))
+          (binary_expression
+            (identifier)
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (complement
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (transpose
+            (call
+              (base_function)
+              (argument_list
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier))))))))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (call
+                (base_function)
+                (argument_list
+                  (call
+                    (identifier)
+                    (argument_list
+                      (identifier)))))))
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (call
+            (base_function)
+            (argument_list
+              (identifier)))))
+      (return_statement
+        (identifier)))))

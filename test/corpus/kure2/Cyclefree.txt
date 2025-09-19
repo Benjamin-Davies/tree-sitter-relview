@@ -1,0 +1,76 @@
+==================
+Cyclefree
+==================
+
+{*********************************************************
+  Testing cyclefreeness of a directed graph by removing
+  sources again and again
+*********************************************************}
+
+Cyclefree(R)
+  DECL s, v
+  BEG  v = Ln1(R);
+       s = v & -(R^ * v);
+       WHILE -empty(s) DO
+         v = v & -s;
+         s = v & -(R^ * v)
+         OD
+       RETURN empty(v)
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (complement
+            (parenthesized_expression
+              (binary_expression
+                (transpose
+                  (identifier))
+                (identifier))))))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (transpose
+                      (identifier))
+                    (identifier))))))))
+      (return_statement
+        (call
+          (base_function)
+          (argument_list
+            (identifier)))))))

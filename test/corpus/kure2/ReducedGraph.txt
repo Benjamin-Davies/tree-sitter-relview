@@ -1,0 +1,113 @@
+==================
+ReducedGraph
+==================
+
+{*********************************************************
+  Computation of the (cyclefree) reduced graph of a
+  directed graph using the column-wise representation of
+  the strongly connected components
+*********************************************************}
+
+ReducedGraph(R)
+  DECL B, S, T, p, x
+  BEG  B = rtc(R) & rtc(R)^;
+       S = B * point(Ln1(R));
+       x = -S;
+       WHILE -empty(x) DO
+         p = point(x);
+         S = conc(S, B * p);
+         x = x & -(B * p)
+         OD;
+       T = S^ * R * S
+       RETURN T & -I(T)
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (call
+            (identifier)
+            (argument_list
+              (identifier)))
+          (transpose
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (call
+            (base_function)
+            (argument_list
+              (call
+                (base_function)
+                (argument_list
+                  (identifier)))))))
+      (assignment_statement
+        (identifier)
+        (complement
+          (identifier)))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier)))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (parenthesized_expression
+                  (binary_expression
+                    (identifier)
+                    (identifier))))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (transpose
+            (identifier))
+          (binary_expression
+            (identifier)
+            (identifier))))
+      (return_statement
+        (binary_expression
+          (identifier)
+          (complement
+            (call
+              (base_function)
+              (argument_list
+                (identifier)))))))))

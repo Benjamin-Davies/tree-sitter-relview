@@ -1,0 +1,129 @@
+==================
+DedekindCuts
+==================
+
+decut(X) = dom(syq(epsi(X), mi(X,ma(X,epsi(X)))) & I(epsi(X)^ * epsi(X))) .
+
+emb(X) = syq(X, epsi(X) * inj(decut(X))^) .
+
+cutord(X) = inj(decut(X)) * (epsi(X) \ epsi(X)) * inj(decut(X))^ .
+
+markrel(X) = subgraph(cutord(X),ran(emb(X))) .
+
+---
+
+(source_file
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (call
+        (base_function)
+        (argument_list
+          (binary_expression
+            (call
+              (base_function)
+              (argument_list
+                (call
+                  (base_function)
+                  (argument_list
+                    (identifier)))
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier)
+                    (call
+                      (identifier)
+                      (argument_list
+                        (identifier)
+                        (call
+                          (base_function)
+                          (argument_list
+                            (identifier)))))))))
+            (call
+              (base_function)
+              (argument_list
+                (binary_expression
+                  (transpose
+                    (call
+                      (base_function)
+                      (argument_list
+                        (identifier))))
+                  (call
+                    (base_function)
+                    (argument_list
+                      (identifier)))))))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (call
+        (base_function)
+        (argument_list
+          (identifier)
+          (binary_expression
+            (call
+              (base_function)
+              (argument_list
+                (identifier)))
+            (transpose
+              (call
+                (base_function)
+                (argument_list
+                  (call
+                    (identifier)
+                    (argument_list
+                      (identifier)))))))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (binary_expression
+        (call
+          (base_function)
+          (argument_list
+            (call
+              (identifier)
+              (argument_list
+                (identifier)))))
+        (binary_expression
+          (parenthesized_expression
+            (binary_expression
+              (call
+                (base_function)
+                (argument_list
+                  (identifier)))
+              (call
+                (base_function)
+                (argument_list
+                  (identifier)))))
+          (transpose
+            (call
+              (base_function)
+              (argument_list
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier))))))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (call
+        (identifier)
+        (argument_list
+          (call
+            (identifier)
+            (argument_list
+              (identifier)))
+          (call
+            (identifier)
+            (argument_list
+              (call
+                (identifier)
+                (argument_list
+                  (identifier))))))))))

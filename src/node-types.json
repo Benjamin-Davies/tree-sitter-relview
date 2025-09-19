@@ -8,6 +8,10 @@
       "required": false,
       "types": [
         {
+          "type": "base_function",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -42,6 +46,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -82,6 +90,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -141,6 +153,10 @@
       "required": true,
       "types": [
         {
+          "type": "base_function",
+          "named": true
+        },
+        {
           "type": "call",
           "named": true
         },
@@ -171,6 +187,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "definition",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -237,6 +257,10 @@
       "required": true,
       "types": [
         {
+          "type": "base_function",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
@@ -271,6 +295,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -329,6 +357,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -395,6 +427,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -470,6 +506,10 @@
       "required": true,
       "types": [
         {
+          "type": "base_function",
+          "named": true
+        },
+        {
           "type": "call",
           "named": true
         },
@@ -523,6 +563,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "base_function",
+          "named": true
+        },
         {
           "type": "binary_expression",
           "named": true
@@ -596,6 +640,10 @@
   },
   {
     "type": "2-nd",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {

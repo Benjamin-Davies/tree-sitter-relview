@@ -1,12 +1,22 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "relview",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "definition"
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "definition"
+          },
+          {
+            "type": "STRING",
+            "value": "."
+          }
+        ]
       }
     },
     "_whitespace": {
@@ -44,10 +54,6 @@
               "name": "function_body"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "."
         }
       ]
     },
@@ -154,6 +160,22 @@
           "value": "DECL"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "definition"
+              },
+              {
+                "type": "STRING",
+                "value": ";"
+              }
+            ]
+          }
+        },
+        {
           "type": "SYMBOL",
           "name": "identifier"
         },
@@ -176,19 +198,36 @@
       ]
     },
     "_statement": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "assignment_statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "assignment_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "if_statement"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "while_loop"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "if_statement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "while_loop"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -340,6 +379,10 @@
     "_term": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "base_function"
+        },
         {
           "type": "SYMBOL",
           "name": "identifier"
@@ -773,5 +816,262 @@
   "externals": [],
   "inline": [],
   "supertypes": [],
-  "reserved": {}
+  "reserved": {
+    "keyword": [
+      {
+        "type": "STRING",
+        "value": "BEG"
+      },
+      {
+        "type": "STRING",
+        "value": "END"
+      },
+      {
+        "type": "STRING",
+        "value": "DECL"
+      },
+      {
+        "type": "STRING",
+        "value": "IF"
+      },
+      {
+        "type": "STRING",
+        "value": "THEN"
+      },
+      {
+        "type": "STRING",
+        "value": "ELSE"
+      },
+      {
+        "type": "STRING",
+        "value": "FI"
+      },
+      {
+        "type": "STRING",
+        "value": "WHILE"
+      },
+      {
+        "type": "STRING",
+        "value": "DO"
+      },
+      {
+        "type": "STRING",
+        "value": "OD"
+      },
+      {
+        "type": "STRING",
+        "value": "RETURN"
+      }
+    ],
+    "base_function": [
+      {
+        "type": "STRING",
+        "value": "TRUE"
+      },
+      {
+        "type": "STRING",
+        "value": "true"
+      },
+      {
+        "type": "STRING",
+        "value": "FALSE"
+      },
+      {
+        "type": "STRING",
+        "value": "false"
+      },
+      {
+        "type": "STRING",
+        "value": "L"
+      },
+      {
+        "type": "STRING",
+        "value": "O"
+      },
+      {
+        "type": "STRING",
+        "value": "I"
+      },
+      {
+        "type": "STRING",
+        "value": "Ln1"
+      },
+      {
+        "type": "STRING",
+        "value": "On1"
+      },
+      {
+        "type": "STRING",
+        "value": "L1n"
+      },
+      {
+        "type": "STRING",
+        "value": "O1n"
+      },
+      {
+        "type": "STRING",
+        "value": "dom"
+      },
+      {
+        "type": "STRING",
+        "value": "syq"
+      },
+      {
+        "type": "STRING",
+        "value": "trans"
+      },
+      {
+        "type": "STRING",
+        "value": "refl"
+      },
+      {
+        "type": "STRING",
+        "value": "symm"
+      },
+      {
+        "type": "STRING",
+        "value": "inj"
+      },
+      {
+        "type": "STRING",
+        "value": "init"
+      },
+      {
+        "type": "STRING",
+        "value": "next"
+      },
+      {
+        "type": "STRING",
+        "value": "succ"
+      },
+      {
+        "type": "STRING",
+        "value": "point"
+      },
+      {
+        "type": "STRING",
+        "value": "atom"
+      },
+      {
+        "type": "STRING",
+        "value": "randomXY"
+      },
+      {
+        "type": "STRING",
+        "value": "randomcfXY"
+      },
+      {
+        "type": "STRING",
+        "value": "random"
+      },
+      {
+        "type": "STRING",
+        "value": "randomperm"
+      },
+      {
+        "type": "STRING",
+        "value": "empty"
+      },
+      {
+        "type": "STRING",
+        "value": "unival"
+      },
+      {
+        "type": "STRING",
+        "value": "eq"
+      },
+      {
+        "type": "STRING",
+        "value": "incl"
+      },
+      {
+        "type": "STRING",
+        "value": "cardeq"
+      },
+      {
+        "type": "STRING",
+        "value": "cardlt"
+      },
+      {
+        "type": "STRING",
+        "value": "cardleq"
+      },
+      {
+        "type": "STRING",
+        "value": "cardgt"
+      },
+      {
+        "type": "STRING",
+        "value": "cardgeq"
+      },
+      {
+        "type": "STRING",
+        "value": "epsi"
+      },
+      {
+        "type": "STRING",
+        "value": "cardrel"
+      },
+      {
+        "type": "STRING",
+        "value": "cardfilter"
+      },
+      {
+        "type": "STRING",
+        "value": "1-st"
+      },
+      {
+        "type": "STRING",
+        "value": "2-nd"
+      },
+      {
+        "type": "STRING",
+        "value": "p-1"
+      },
+      {
+        "type": "STRING",
+        "value": "p-2"
+      },
+      {
+        "type": "STRING",
+        "value": "p-ord"
+      },
+      {
+        "type": "STRING",
+        "value": "i-1"
+      },
+      {
+        "type": "STRING",
+        "value": "i-2"
+      },
+      {
+        "type": "STRING",
+        "value": "s-ord"
+      },
+      {
+        "type": "STRING",
+        "value": "part-f"
+      },
+      {
+        "type": "STRING",
+        "value": "tot-f"
+      },
+      {
+        "type": "STRING",
+        "value": "minsets"
+      },
+      {
+        "type": "STRING",
+        "value": "minsets_upset"
+      },
+      {
+        "type": "STRING",
+        "value": "maxsets"
+      },
+      {
+        "type": "STRING",
+        "value": "maxsets_downset"
+      }
+    ]
+  }
 }

@@ -1,0 +1,102 @@
+==================
+SpanntreeFast
+==================
+
+{*********************************************************
+  Fast cmputation of a (directed) spanning tree of a con-
+  nected and undirected graph following Prim's method
+*********************************************************}
+
+SpanntreeFast(E)
+  DECL T, s, v, w
+  BEG  IF -isempty(E) THEN T = atom(E);
+                           s = dom(T);
+                           v = s | ran(T);
+                           WHILE -empty(-v) DO
+                             T = T | atom(v * -v^ & E);
+                             v = s | ran(T)
+                             OD
+                      ELSE T = O(E) FI
+       RETURN T
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (if_statement
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (identifier))))
+        (then_clause
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (call
+                (identifier)
+                (argument_list
+                  (identifier)))))
+          (while_loop
+            (complement
+              (call
+                (base_function)
+                (argument_list
+                  (complement
+                    (identifier)))))
+            (while_body
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (call
+                    (base_function)
+                    (argument_list
+                      (binary_expression
+                        (identifier)
+                        (binary_expression
+                          (complement
+                            (transpose
+                              (identifier)))
+                          (identifier)))))))
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (call
+                    (identifier)
+                    (argument_list
+                      (identifier))))))))
+        (else_clause
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))))
+      (return_statement
+        (identifier)))))

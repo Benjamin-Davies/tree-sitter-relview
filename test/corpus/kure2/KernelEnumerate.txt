@@ -1,0 +1,78 @@
+==================
+KernelEnumerate
+==================
+
+avector(X) = (Ln1(X) \ (epsi | X * epsi))^ .
+
+svector(X) = (epsi & X * epsi) \ On1(X) .
+
+kvector(X) = avector(X) & svector(X) .
+
+kernels(X) = epsi * inj(kvector(X))^ .
+
+---
+
+(source_file
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (transpose
+        (parenthesized_expression
+          (binary_expression
+            (call
+              (base_function)
+              (argument_list
+                (identifier)))
+            (parenthesized_expression
+              (binary_expression
+                (base_function)
+                (binary_expression
+                  (identifier)
+                  (base_function)))))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (binary_expression
+        (parenthesized_expression
+          (binary_expression
+            (base_function)
+            (binary_expression
+              (identifier)
+              (base_function))))
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (binary_expression
+        (call
+          (identifier)
+          (argument_list
+            (identifier)))
+        (call
+          (identifier)
+          (argument_list
+            (identifier))))))
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (function_body
+      (binary_expression
+        (base_function)
+        (transpose
+          (call
+            (base_function)
+            (argument_list
+              (call
+                (identifier)
+                (argument_list
+                  (identifier))))))))))

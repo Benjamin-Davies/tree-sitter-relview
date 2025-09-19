@@ -1,0 +1,400 @@
+==================
+ApproxAlg
+==================
+
+{************************************************************
+ Computation of a sequence of vectors approximating a mini-
+ mum colouring of a simple graph. The approximation algo-
+ rithm can be found in Emden-Weinert et al., p. 130
+************************************************************}
+
+ColourApprox(R)
+  DECL C, p, c
+  BEG  p = point(Ln1(R));
+       C = p * p^;
+       WHILE -universal(dom(C)) DO
+         p = point(-dom(C));
+         c = point(-(C^ * R * p));
+         C = C | p * c^
+         OD
+       RETURN C * inj(ran(C))^
+  END.
+
+{************************************************************
+ Approximation algorithm for a minimum vertex cover of an
+ undirected and loop-free graph following the book of Cor-
+ men, Leiserson and Rivest, p. 967. The algorithm has ra-
+ tio bound 2
+************************************************************}
+
+VertexCovApprox(R)
+  DECL E, c, e
+  BEG  c = On1(R);
+       E = R;
+       WHILE -empty(E) DO
+         e = edge(E);
+         c = c | dom(e);
+         E = E & -(e*L(e) & R) & -(L(e)*e & R)
+         OD
+       RETURN c
+  END.
+
+{************************************************************
+ Approximation algorithm for a minimum edge cover of a con-
+ nected undirected and loopfree graph following the book of
+ Cormen, Leiserson and Rivest, p. 975. There, the algorithm
+ is formulated for the set covering problem. The algorithm
+ has a ratio bound 3/2
+************************************************************}
+
+EdgeCovApprox(R)
+  DECL C, K, u, e
+  BEG  u = Ln1(R);
+       C = O(R);
+       WHILE -empty(u) DO
+         K = u * u^ & R;
+         IF -empty(K) THEN e = edge(K)
+                      ELSE K = (u*L(u)^ | L(u)*u^) & R;
+                           e = edge(K) FI;
+         u = u & -dom(e);
+         C = C | e
+         OD
+       RETURN C
+  END.
+
+{************************************************************
+ Approximation algorithm for a maximum cut of an undirect-
+ ed and loopfree graph with ratio bound 2
+************************************************************}
+
+MaxCut(R)
+  DECL c1, c2, v, p
+  BEG  v = Ln1(R);
+       c1 = On1(R);
+       c2 = On1(R);
+       WHILE -empty(v) DO
+         p = point(v);
+         IF cardlt(R*p&c1,R*p&c2) THEN c1 = c1 | p
+                                  ELSE c2 = c2 | p FI;
+         v = v & -p
+         OD
+       RETURN c1
+  END.
+
+---
+
+(source_file
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))))
+      (assignment_statement
+        (identifier)
+        (binary_expression
+          (identifier)
+          (transpose
+            (identifier))))
+      (while_loop
+        (complement
+          (call
+            (identifier)
+            (argument_list
+              (call
+                (base_function)
+                (argument_list
+                  (identifier))))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (complement
+                  (call
+                    (base_function)
+                    (argument_list
+                      (identifier)))))))
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (complement
+                  (parenthesized_expression
+                    (binary_expression
+                      (transpose
+                        (identifier))
+                      (binary_expression
+                        (identifier)
+                        (identifier))))))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (identifier)
+                (transpose
+                  (identifier)))))))
+      (return_statement
+        (binary_expression
+          (identifier)
+          (transpose
+            (call
+              (base_function)
+              (argument_list
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier))))))))))
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (identifier))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (identifier)
+              (argument_list
+                (identifier))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (call
+                (base_function)
+                (argument_list
+                  (identifier)))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (complement
+                  (parenthesized_expression
+                    (binary_expression
+                      (identifier)
+                      (binary_expression
+                        (call
+                          (base_function)
+                          (argument_list
+                            (identifier)))
+                        (identifier)))))
+                (complement
+                  (parenthesized_expression
+                    (binary_expression
+                      (call
+                        (base_function)
+                        (argument_list
+                          (identifier)))
+                      (binary_expression
+                        (identifier)
+                        (identifier))))))))))
+      (return_statement
+        (identifier))))
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (binary_expression
+                (transpose
+                  (identifier))
+                (identifier))))
+          (if_statement
+            (complement
+              (call
+                (base_function)
+                (argument_list
+                  (identifier))))
+            (then_clause
+              (assignment_statement
+                (identifier)
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier)))))
+            (else_clause
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (parenthesized_expression
+                    (binary_expression
+                      (identifier)
+                      (binary_expression
+                        (transpose
+                          (call
+                            (base_function)
+                            (argument_list
+                              (identifier))))
+                        (binary_expression
+                          (call
+                            (base_function)
+                            (argument_list
+                              (identifier)))
+                          (transpose
+                            (identifier))))))
+                  (identifier)))
+              (assignment_statement
+                (identifier)
+                (call
+                  (identifier)
+                  (argument_list
+                    (identifier))))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (call
+                  (base_function)
+                  (argument_list
+                    (identifier))))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (identifier)))))
+      (return_statement
+        (identifier))))
+  (comment)
+  (definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (program_body
+      (decl_list
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (assignment_statement
+        (identifier)
+        (call
+          (base_function)
+          (argument_list
+            (identifier))))
+      (while_loop
+        (complement
+          (call
+            (base_function)
+            (argument_list
+              (identifier))))
+        (while_body
+          (assignment_statement
+            (identifier)
+            (call
+              (base_function)
+              (argument_list
+                (identifier))))
+          (if_statement
+            (call
+              (base_function)
+              (argument_list
+                (binary_expression
+                  (identifier)
+                  (binary_expression
+                    (identifier)
+                    (identifier)))
+                (binary_expression
+                  (identifier)
+                  (binary_expression
+                    (identifier)
+                    (identifier)))))
+            (then_clause
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier))))
+            (else_clause
+              (assignment_statement
+                (identifier)
+                (binary_expression
+                  (identifier)
+                  (identifier)))))
+          (assignment_statement
+            (identifier)
+            (binary_expression
+              (identifier)
+              (complement
+                (identifier))))))
+      (return_statement
+        (identifier)))))

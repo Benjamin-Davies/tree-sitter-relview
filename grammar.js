@@ -5,7 +5,97 @@
  */
 
 /// <reference types="tree-sitter-cli/dsl" />
+
 // @ts-check
+
+const keywords = [
+  'BEG',
+  'END',
+  'DECL',
+  'IF',
+  'THEN',
+  'ELSE',
+  'FI',
+  'WHILE',
+  'DO',
+  'OD',
+  'RETURN',
+];
+
+const base_functions = [
+  'TRUE',
+  'true',
+  'FALSE',
+  'false',
+  'L',
+  'O',
+  'I',
+  'Ln1',
+  'On1',
+  'L1n',
+  'O1n',
+  'dom',
+
+  // Base functions for calculating residuals and symmetric quotients:
+  'syq',
+
+  // Base functions for calculating closures:
+  'trans',
+  'refl',
+  'symm',
+
+  // Various base functions concerning vectors and points without choice operations:
+  'inj',
+  'init',
+  'next',
+  'succ',
+
+  // Base operations for choices:
+  'point',
+  'atom',
+
+  // Base operations which generate random relations:
+  'randomXY',
+  'randomcfXY',
+  'random',
+  'randomperm',
+
+  // Base functions for certain tests on relations
+  'empty',
+  'unival',
+  'eq',
+  'incl',
+  'cardeq',
+  'cardlt',
+  'cardleq',
+  'cardgt',
+  'cardgeq',
+
+  // Base functions concerning operations on powersets:
+  'epsi',
+  'cardrel',
+  'cardfilter',
+
+  // Base functions concerning relational product and sum domains:
+  '1-st',
+  '2-nd',
+  'p-1',
+  'p-2',
+  'p-ord',
+  'i-1',
+  'i-2',
+  's-ord',
+
+  // Base functions concerning function domains:
+  'part-f',
+  'tot-f',
+
+  // Base functions for minimal and maximal sets:
+  'minsets',
+  'minsets_upset',
+  'maxsets',
+  'maxsets_downset',
+];
 
 module.exports = grammar({
   name: 'relview',
@@ -17,8 +107,15 @@ module.exports = grammar({
     [$.base_function, $.identifier],
   ],
 
+  reserved: {
+    keyword: ($) => keywords,
+    base_function: ($) => base_functions,
+  },
+
+  word: ($) => $.identifier,
+
   rules: {
-    source_file: ($) => repeat($.definition),
+    source_file: ($) => repeat(seq($.definition, '.')),
 
     _whitespace: ($) => /\s+/,
     comment: ($) => /\{[^\}]*\}/,
@@ -28,8 +125,7 @@ module.exports = grammar({
       seq(
         $.identifier,
         $.parameter_list,
-        choice($.program_body, $.function_body),
-        '.'
+        choice($.program_body, $.function_body)
       ),
     program_body: ($) =>
       seq(
@@ -47,10 +143,19 @@ module.exports = grammar({
         optional(seq($.identifier, repeat(seq(',', $.identifier)))),
         ')'
       ),
-    decl_list: ($) => seq('DECL', $.identifier, repeat(seq(',', $.identifier))),
+    decl_list: ($) =>
+      seq(
+        'DECL',
+        repeat(seq($.definition, ';')),
+        $.identifier,
+        repeat(seq(',', $.identifier))
+      ),
 
     _statement: ($) =>
-      choice($.assignment_statement, $.if_statement, $.while_loop),
+      seq(
+        choice($.assignment_statement, $.if_statement, $.while_loop),
+        optional(';')
+      ),
 
     assignment_statement: ($) => seq($.identifier, '=', $._expression),
 
@@ -67,6 +172,7 @@ module.exports = grammar({
     _expression: ($) => choice($._term, $.binary_expression),
     _term: ($) =>
       choice(
+        $.base_function,
         $.identifier,
         $.transpose,
         $.complement,
@@ -90,81 +196,6 @@ module.exports = grammar({
       prec.left(seq($._term, $._binary_operator, $._expression)),
     _binary_operator: ($) => choice('|', '&', '+', '*', '/', '\\'),
 
-    base_function: ($) =>
-      choice(
-        // Base functions for calculating constant relations and domains:
-        'TRUE',
-        'true',
-        'FALSE',
-        'false',
-        'L',
-        'O',
-        'I',
-        'Ln1',
-        'On1',
-        'L1n',
-        'O1n',
-        'dom',
-
-        // Base functions for calculating residuals and symmetric quotients:
-        'syq',
-
-        // Base functions for calculating closures:
-        'trans',
-        'refl',
-        'symm',
-
-        // Various base functions concerning vectors and points without choice operations:
-        'inj',
-        'init',
-        'next',
-        'succ',
-
-        // Base operations for choices:
-        'point',
-        'atom',
-
-        // Base operations which generate random relations:
-        'randomXY',
-        'randomcfXY',
-        'random',
-        'randomperm',
-
-        // Base functions for certain tests on relations
-        'empty',
-        'unival',
-        'eq',
-        'incl',
-        'cardeq',
-        'cardlt',
-        'cardleq',
-        'cardgt',
-        'cardgeq',
-
-        // Base functions concerning operations on powersets:
-        'epsi',
-        'cardrel',
-        'cardfilter',
-
-        // Base functions concerning relational product and sum domains:
-        '1-st',
-        '2-nd',
-        'p-1',
-        'p-2',
-        'p-ord',
-        'i-1',
-        'i-2',
-        's-ord',
-
-        // Base functions concerning function domains:
-        'part-f',
-        'tot-f',
-
-        // Base functions for minimal and maximal sets:
-        'minsets',
-        'minsets_upset',
-        'maxsets',
-        'maxsets_downset'
-      ),
+    base_function: ($) => choice(...base_functions),
   },
 });
