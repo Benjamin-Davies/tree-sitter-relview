@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "relview_relation",
+      "camelcase": "RelViewRelation",
+      "title": "RelView Relation",
+      "scope": "source.relview-relation",
+      "file-types": [
+        "ascii"
+      ],
+      "injection-regex": "^relview_relation$",
+      "class-name": "TreeSitterRelviewRelation"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "RelView relation language",
+    "authors": [
+      {
+        "name": "Benjamin Davies",
+        "email": "bentendavies@gmail.com",
+        "url": "https://bend.nz/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/benjamin-davies/tree-sitter-relview"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
