@@ -18,10 +18,10 @@ module.exports = grammar({
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_-]*/,
     number: ($) => /\d+/,
 
-    header: ($) => seq($.identifier, ' (', $.domain, ')\n'),
-    domain: ($) => seq($.number, ', ', $.number),
+    header: ($) => seq($.identifier, ' ', '(', $.domain, ')', '\n'),
+    domain: ($) => seq($.number, ',', ' ', $.number),
 
-    line: ($) => seq($.number, ' : ', $.number_list, '\n'),
-    number_list: ($) => seq($.number, repeat(seq(', ', $.number))),
+    line: ($) => seq($.number, ' ', ':', ' ', $.number_list, '\n'),
+    number_list: ($) => seq($.number, repeat(seq(',', ' ', $.number))),
   },
 });
